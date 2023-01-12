@@ -1,0 +1,109 @@
+﻿@using Biugra.Web.Models
+@{
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/assets/vendor/jquery/jquery.min.js"></script>
+
+
+    @if (!string.IsNullOrEmpty(ViewBag.message))
+    {
+        <script language="javascript">
+            $(document).ready(function () {
+
+                Swal.fire({
+                    icon: 'success',
+                    title: '@ViewBag.message',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            });
+        </script>
+        ViewBag.message = null;
+    }
+}
+@model AddCommentViewModel
+
+<div class="container-fluid">
+
+    <div class="text-xl-end mt-2" style="position:fixed">
+        <a asp-controller="Forum" asp-action="Index" type="button"><i class=" uil-arrow-left me-1" style="font-size:50px;"></i></a>
+
+    </div>
+    <div class="row">
+        <div class="col-xxl-10 col-lg-6 mt-3 mx-auto">
+            <!-- project card -->
+            <div class="card d-block">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <h3 class="">@Model.Forum.Title</h3>
+                        <!-- project title-->
+                    </div>
+
+                    <p class="text-muted mb-4 mt-2">
+                        @Html.Raw(Model.Forum.Content)
+                    </p>
+                    <hr widt>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="mb-4">
+                                <h5>Oluşturulma Tarihi</h5>
+                                <p>@Model.Forum.CreatedOn.ToString("MM/dd/yyyy")  <small class="text-muted">@Model.Forum.CreatedOn.ToString("hh:mm tt")</small></p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-4">
+                                <h5>Kategori</h5>
+                                <p>@Model.Forum.Category.Name</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tooltip-container">
+                        <h5>Forum Sahibi: @Model.Forum.UserName @Model.Forum.UserLastName</h5>
+                    </div>
+
+                </div> <!-- end card-body-->
+
+            </div> <!-- end card-->
+
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="mt-0 mb-3">Yorumlar (@Model.Forum.Comments.Count())</h4>
+                    <form asp-controller="Forum" asp-action="AddComment" method="post">
+                        <input type="hidden" asp-for="@Model.NewComment.ForumId" value="@Model.Forum.Id" />
+                        <textarea asp-for="@Model.NewComment.Description" class="form-control form-control-light mb-2" placeholder="Yorumunuzu buraya yazabilirsiniz." id="example-textarea" rows="3"></textarea>
+                        <div class="text-end">
+
+                            <div class="btn-group mb-2 ms-2">
+                                <button type="submit" class="btn btn-primary rounded-pill">Yorum Yap</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    @foreach (var comment in Model.Forum.Comments)
+                    {
+                        <div class="d-flex align-items-start mt-2">
+                            <div class="w-100 overflow-hidden">
+                                <h5 class="mt-0">@comment.User.FirstName @comment.User.LastName <small class="text-muted">@comment.CreatedOn.ToString("dd/MM/yyyy")  <small class="text-muted">@comment.CreatedOn.ToString("hh:mm tt")</small></small></h5>
+                                @comment.Description
+
+                            </div>
+                        </div>
+                        <hr />
+                    }
+
+
+                </div> <!-- end card-body-->
+            </div>
+            <!-- end card-->
+        </div> <!-- end col -->
+
+        <div class="col-lg-6 col-xxl-4">
+
+
+            <div class="card">
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+
+</div> <!-- container -->

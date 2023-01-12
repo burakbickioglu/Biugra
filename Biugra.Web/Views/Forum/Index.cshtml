@@ -1,0 +1,173 @@
+﻿@using Biugra.Domain.Models.Dtos.Forum
+@{
+    Layout = "_Layout";
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/assets/vendor/jquery/jquery.min.js"></script>
+
+
+    @if (!string.IsNullOrEmpty(ViewBag.message))
+    {
+    <script language="javascript">
+                                    $(document).ready(function () {
+
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: '@ViewBag.message',
+                                            showConfirmButton: false,
+                                            timer: 2000
+                                        })
+                                    });
+    </script>
+        ViewBag.message = null;
+    }
+}
+@model List<ForumResponseDTO>
+<div class="content">
+    
+
+    <!-- Start Content-->
+    @*<div class="container-fluid">
+        <div class="text-xl-end mt-2" style="position:fixed; right:0">
+            <a asp-controller="Forum" asp-action="Add" type="button" class="btn btn-success mb-2 me-2"><i class="mdi mdi-plus me-1"></i>Ekle</a>
+
+        </div>*@
+    <div class="container-fluid">
+        <div class="row mt-2">
+            
+            <div class="col">
+            <div class="text-xl-end mt-2" style="height:50px;">
+                <a asp-controller="Forum" asp-action="Add" type="button" class="btn btn-success rounded-pill mb-2 me-2"><i class="mdi mdi-plus me-1"></i>Yeni Forum Ekle</a>
+            </div>
+            </div>
+        </div>
+        
+        @if (Model.Count > 0)
+        {
+            @*
+            @foreach (var forum in Model)
+            {
+                <input type="hidden" asp-for="@forum.Id" />
+                <div class="row">
+                    <div class="col-xxl-10 col-lg-6 mt-2 mx-auto">
+                        <!-- project card -->
+                        <div class="card d-block">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h3 class="color-blue"><a asp-controller="forum" asp-action="detail" asp-route-id="@forum.Id">@(forum.Title.Length > 40 ? forum.Title.Substring(0, 40) + "..." : forum.Title)</a></h3>
+                                    <a asp-controller="forum" asp-action="detail" asp-route-id="@forum.Id" class="dropdown-toggle arrow-none card-drop" aria-expanded="false">
+                                        <i class="uil-eye"></i>
+                                    </a>
+                                    <!-- project title-->
+                                </div>
+
+
+                                <p class="text-muted mb-2">
+                                    @Html.Raw(forum.Content)
+                                </p>
+
+
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="mb-4">
+                                            <h5>Oluşturulma Tarihi</h5>
+                                            <p>@forum.CreatedOn.ToString("MM/dd/yyyy")  <small class="text-muted">@forum.CreatedOn.ToString("hh:mm tt")</small></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-4">
+                                            <h5>Yorum Sayısı</h5>
+                                            <p>@forum.Comments.Count()</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-4">
+                                            <h5>Kategori</h5>
+                                            <a asp-action="Index" asp-controller="Forum" asp-route-category="@forum.Category.Name" class="side-nav-link"><p>@forum.Category.Name</p> </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="tooltip-container">
+                                    <h5>Forum Sahibi: @forum.UserName @forum.UserLastName</h5>
+                                </div>
+
+                            </div> <!-- end card-body-->
+
+                        </div> <!-- end card-->
+                        <!-- end card-->
+                    </div> <!-- end col -->
+
+
+                </div>
+            }*@
+
+
+            <!-- burası yeni tasarım--> 
+
+
+            <div class="row mt-2">
+            @foreach(var forum in Model){
+
+                    <div class="col-md-6 col-xxl-4 col-sm-6 ">
+                        <!-- project card -->
+                        <div class="card d-block " style="height:300px;">
+                            <div class="card-body">
+                                <div class="dropdown card-widgets">
+                                    <a asp-controller="forum" asp-action="detail" asp-route-id="@forum.Id" class="dropdown-toggle arrow-none card-drop" aria-expanded="false">
+                                        <i class="uil-eye"></i>
+                                    </a>
+                                </div>
+                                <!-- project title-->
+                                <h4 class="mt-0">
+                                    <a class="text-primary" asp-controller="forum" asp-action="detail" asp-route-id="@forum.Id">@(forum.Title.Length > 20 ? forum.Title.Substring(0, 20) + "..." : forum.Title)</a>
+                                </h4>
+                                <div class="badge bg-primary text-light w-25" @*style="height:30px;"*@>
+                                    <a asp-action="Index" asp-controller="Forum" asp-route-category="@forum.Category.Name"><h6 style="color:white;">@forum.Category.Name</h6> </a>
+                                </div>
+
+                                <p class="text-muted font-13 my-3">
+                                    @(forum.Description.Length > 80 ? forum.Description.Substring(0, 80) + "..." : forum.Description)
+                                </p>
+
+                                <!-- project detail-->
+                                <p class="mb-1">
+                                    <span class="pe-2 text-nowrap mb-2 d-inline-block">
+                                        <i class="uil uil-user text-muted"></i>
+                                        <b>@forum.UserName @forum.UserLastName &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+                                    </span>
+                                    <span class="text-nowrap mb-2 d-inline-block">
+                                        <i class="mdi mdi-comment-multiple-outline text-muted"></i>
+                                        <b>@forum.Comments.Count()</b> Yorum &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </span>
+                                    <span class="text-nowrap mb-2 d-inline-block">
+                                        <i class="uil-stopwatch text-muted"></i>
+                                            <small>@forum.CreatedOn.ToString("MM/dd/yyyy")  <small class="text-muted">@forum.CreatedOn.ToString("hh:mm tt")</small></small>
+                                       
+                                    </span>
+                                </p>
+
+                                
+                            </div> <!-- end card-body-->
+                            
+                        </div> <!-- end card-->
+                    </div> <!-- end col -->
+
+
+            }
+                </div>
+
+        }
+        else
+        {
+            <h3 class="mx-2 my-2 text-primary">Malesef bu kategoride forum bulunmamaktadır. İlk forumu eklemeye ne dersin ? </h3>
+
+        }
+
+
+        <!-- end row -->
+
+
+    </div> <!-- container -->
+
+</div> <!-- content -->

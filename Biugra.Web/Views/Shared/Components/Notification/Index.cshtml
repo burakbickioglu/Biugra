@@ -1,0 +1,35 @@
+﻿@using Biugra.Domain.Models.Dtos.Notification
+@model List<NotificationDTO>
+
+
+
+@if(Model != null){
+    @foreach (var item in Model)
+{
+
+        <a asp-controller="account" asp-action="profile" class="dropdown-item p-0 notify-item card unread-noti shadow-none mb-2">
+        <div class="card-body">
+            <div class="d-flex align-items-center">
+
+                <div class="flex-grow-1 text-truncate ms-2">
+                    <h5 class=" noti-item-title fw-semibold font-12 text-success">@item.Message</h5>
+                </div>
+            </div>
+        </div>
+    </a>
+}
+
+
+}
+else{
+    <a href="javascript:void(0);" class="dropdown-item p-0 notify-item card unread-noti shadow-none mb-2">
+        <div class="card-body">
+            <div class="d-flex align-items-center">
+
+                <div class="flex-grow-1 text-truncate ms-2">
+                    <h5 class=" noti-item-title fw-semibold font-12">Henüz bildirimin yok </h5>
+                </div>
+            </div>
+        </div>
+    </a>
+}

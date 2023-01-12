@@ -1,0 +1,105 @@
+﻿@{
+    Layout = "_Layout";
+}
+@model List<UserDTO>
+
+
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="page-title">
+                    @localizer["users"]
+                </h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row mb-2">
+                        <div class="col-xl-8">
+                            <form class="row gy-2 gx-2 align-items-center justify-content-between ">
+                                <div class="col-auto">
+                                    <label class="visually-hidden">Search</label>
+                                    <input name="filter" type="text" class="form-control" id="filter" placeholder="@localizer["email_firstname_lastname"]">
+                                   
+                                </div>
+                                <div class="col ms-3 mb-2">
+                                    <button asp-action="UserList" class="input-group-text btn btn-primary rounded-pill mt-2" type="submit">@localizer["search"]</button>
+                                    <button asp-action="UserList" asp-route-filter="" class="input-group-text btn btn-danger rounded-pill mt-2 ms-2" type="submit">Yenile</button>
+                                </div>
+                            </form>
+                        </div>
+                        @*<div class="col-xl-4">
+                        <div class="text-xl-end mt-xl-0 mt-2">
+                        <a asp-controller="Admin" asp-action="Add" type="button" class="btn btn-success mb-2 me-2"><i class="mdi mdi-account-plus me-1"></i>@localizer["add_new_user"]</a>
+
+                        </div>
+                        </div>*@<!-- end col-->
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-centered table-nowrap mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    @*<th>ID</th>*@
+                                    <th>@localizer["name"]</th>
+                                    <th>@localizer["surname"]</th>
+                                    <th>@localizer["email"]</th>
+                                    <th>Yaş</th>
+                                    <th>Lise</th>
+                                    <th style="width: 125px;">@localizer["action"]</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    if (Model != null)
+                                        foreach (var item in @Model)
+                                        {
+                                            <tr>
+
+                                                @*<td><a href="apps-ecommerce-orders-details.html" class="text-body fw-bold">@item.Id</a> </td>*@
+                                                <td>
+                                                    <h5>@item.FirstName</h5>
+
+                                                </td>
+                                                <td>
+                                                    <h5> @item.LastName</h5>
+                                                </td>
+                                                <td>
+                                                    <h5> @item.Email</h5>
+                                                </td>
+                                                <td>
+                                                    <h5> @item.Age</h5>
+                                                </td>
+                                                <td>
+                                                    <h5> @item.HighSchool</h5>
+                                                </td>
+                                                
+                                                <td>
+                                                    <a asp-controller="Admin" asp-action="UserDetail" asp-route-id=@item.Id class="action-icon"><i class="uil-eye"></i></a>
+
+                                                    <a asp-controller="Admin" asp-action="Remove" asp-route-id=@item.Id class="action-icon"> <i class="mdi mdi-delete"></i></a>
+
+
+                                                </td>
+                                            </tr>
+
+                                        }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div> <!-- end card-body-->
+            </div> <!-- end card-->
+        </div> <!-- end col -->
+    </div>
+    <!-- end row -->
+
+</div> <!-- container -->

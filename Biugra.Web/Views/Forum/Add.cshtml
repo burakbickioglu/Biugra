@@ -1,0 +1,69 @@
+﻿@using Biugra.Web.Models
+@model AddForumViewModel
+
+<div class="tab-content">
+    <div class="col-xxl-10 col-lg-6 mt-3 mx-auto" id="form-row-preview">
+        <h1>Yeni Forum</h1>
+        <form asp-action="Add" asp-controller="Forum" method="post">
+            <div class="row g-2 ">
+                <div class="mb-3 col-md-8">
+                    <hr />
+                    <label asp-for="@Model.Forum.Title" class="form-label"></label>
+                    <input asp-for="@Model.Forum.Title" type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row g-2">
+
+                <div class="mb-3 col-md-8">
+                    <label asp-for="@Model.Forum.Description" class="form-label"></label>
+                    <textarea rows="3" asp-for="@Model.Forum.Description" class="form-control" placeholder="Bu alana forumunuz ile alakalı kısa bir ön açıklama girebilirsiniz (Kart tasarımında görüntülenecektir)"></textarea>
+
+                </div>
+            </div>
+            <div class="row g-2">
+
+                <div class="mb-3 col-md-8">
+                    <label asp-for="@Model.Forum.Content" class="form-label"></label>
+                    <textarea id="text-editor" asp-for="@Model.Forum.Content" class="form-control"></textarea>
+
+                </div>
+            </div>
+            <div class="row g-2">
+                <div class="mb-3 col-md-8">
+                    <label class="form-label">Kategori</label>
+                    @Html.DropDownListFor(M => M.Forum.CategoryId, new SelectList(Model.Categories,"Id", "Name","Kategori Seçiniz"), new{@class="form-select"})
+
+
+                </div>
+            </div>
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <button type="submit" class="btn btn-success rounded-pill">Forum Ekle</button>
+        </form>
+    </div> <!-- end preview-->
+
+
+</div> <!-- end tab-content-->
+@section script
+    {
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.25.1/trumbowyg.min.js" integrity="sha512-t4CFex/T+ioTF5y0QZnCY9r5fkE8bMf9uoNH2HNSwsiTaMQMO0C9KbKPMvwWNdVaEO51nDL3pAzg4ydjWXaqbg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.25.2/langs/tr.min.js" integrity="sha512-SysH9TbVmzlYAKIvJJcHAwQtT5TznKnZSC9/hZqew8gSmmnCW4tTvdIEjQRfc3W7fYhrKRnpegQpxzD+ti6Yng==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.25.2/plugins/cleanpaste/trumbowyg.cleanpaste.min.js" integrity="sha512-UInqT8f+K1tkck6llPo0HDxlT/Zxv8t4OGeCuVfsIlXLrnP1ZKDGb+tBsBPMqDW15OcmV8NDfQe9+EaAG4aXeg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#text-editor").trumbowyg(
+                {
+                    lang: 'tr'
+                });
+        })
+    </script>
+}
+
+    @section css
+    {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.25.1/ui/trumbowyg.min.css" integrity="sha512-nwpMzLYxfwDnu68Rt9PqLqgVtHkIJxEPrlu3PfTfLQKVgBAlTKDmim1JvCGNyNRtyvCx1nNIVBfYm8UZotWd4Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+}

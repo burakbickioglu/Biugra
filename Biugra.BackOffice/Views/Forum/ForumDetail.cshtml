@@ -1,0 +1,75 @@
+﻿@using Biugra.Domain.Models.Dtos.Forum
+@model ForumResponseDTO
+
+<div class="container-fluid">
+
+    <div class="text-xl-end mt-2" style="position:fixed">
+        <a asp-controller="Forum" asp-action="Index" type="button"><i class=" uil-arrow-left me-1" style="font-size:50px;"></i></a>
+
+    </div>
+    <div class="row">
+        <div class="col-xxl-10 col-lg-6 mt-2 mx-auto">
+            <!-- project card -->
+            <div class="card d-block">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <h3 class="">@Model.Title</h3>
+                        <div class="dropdown">
+                           
+
+                        </div>
+                        <!-- project title-->
+                    </div>
+
+                    <p class="text-muted mb-4 mt-2">
+                        @Html.Raw(Model.Content)
+                    </p>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="mb-4">
+                                <h5>Oluşturulma Tarihi</h5>
+                                <p>@Model.CreatedOn.ToString("MM/dd/yyyy")  <small class="text-muted">@Model.CreatedOn.ToString("hh:mm tt")</small></p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-4">
+                                <h5>Kategori</h5>
+                                <p>@Model.Category.Name</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tooltip-container">
+                        <h5>Forum Sahibi: @Model.UserName @Model.UserLastName</h5>
+                    </div>
+
+                </div> <!-- end card-body-->
+
+            </div> <!-- end card-->
+
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="mt-0 mb-3">Yorumlar (@Model.Comments.Count())</h4>
+
+                    @foreach (var comment in Model.Comments)
+                    {
+                        <div class="d-flex align-items-start mt-2">
+                            <div class="w-100 overflow-hidden">
+                                <h5 class="mt-0">@comment.User.FirstName @comment.User.LastName</h5>
+                                @comment.Description
+
+                            </div>
+                        </div>
+                        <hr />
+                    }
+
+
+                </div> <!-- end card-body-->
+            </div>
+            <!-- end card-->
+        </div> <!-- end col -->
+    </div>
+    <!-- end row -->
+
+</div> <!-- container -->

@@ -1,0 +1,92 @@
+﻿@using Biugra.Domain.Models.Dtos.Forum
+@model List<ForumResponseDTO>
+@{
+
+}
+
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="page-title">
+                    Forumlar
+                </h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row mb-2">
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-centered table-nowrap mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    @*<th>ID</th>*@
+                                    <th style="width: 125px;">İşlemler</th>
+                                    <th>Başlık</th>
+                                    <th>Kullanıcı</th>
+                                    <th>Açıklama</th>
+                                    <th>Yorum Sayısı</th>
+                                    <th>Kategori</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    if (Model != null)
+                                        foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @if (!item.IsHelpfull)
+                                                    {
+                                                        <a asp-controller="Forum" asp-action="MarkUsefull" asp-route-forumId=@item.Id asp-route-userId=@item.AppUserId class="action-icon">
+                                                            <h1 class='badge bg-success'>Yararlı İşaretle</h1>
+                                                        </a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a class="action-icon disable text-success">Yararlı</a>
+                                                    }
+
+
+                                                </td>
+                                                <td>
+                                                    <a class='badge bg-info' asp-controller="Forum" asp-action="ForumDetail" asp-route-id=@item.Id><h5>@(item.Title.Length > 30 ? (item.Title.Substring(0, 30) + "..") : item.Title)</h5></a>
+                                                </td>
+                                                <td>
+                                                    <a asp-controller="Admin" asp-action="UserDetail" asp-route-id=@(Guid.Parse(item.AppUserId)) class="text-primary">@item.UserName @item.UserLastName</a>
+                                                </td>
+                                                <td>
+                                                    @(item.Description.Length > 38 ? (item.Description.Substring(0, 38) + "..") : item.Description)
+                                                </td>
+
+                                                <td>
+                                                    @item.Comments.Count()
+                                                </td>
+                                                <td>
+                                                    @item.Category.Name
+                                                </td>
+
+
+                                            </tr>
+
+                                        }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div> <!-- end card-body-->
+            </div> <!-- end card-->
+        </div> <!-- end col -->
+    </div>
+    <!-- end row -->
+
+</div> <!-- container -->

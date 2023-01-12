@@ -1,0 +1,30 @@
+﻿@model UserDTO
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+
+<div class="tab-content">
+    <div class="tab-pane show active mt-3 mx-3" id="form-row-preview">
+        <form asp-action="Update" asp-controller="Admin" method="post">
+            <input type="hidden" asp-for="@Model.Id" />
+            <div class="row g-2">
+                <div class="mb-3 col-md-6">
+                    <label asp-for="@Model.FirstName" class="form-label"></label>
+                    <input asp-for="@Model.FirstName" type="text" class="form-control" />
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label asp-for="@Model.LastName" class="form-label"></label>
+                    <input asp-for="@Model.LastName" class="form-control" />
+                </div>
+            </div>
+            <div class="row g-2">
+
+                <div class="mb-3 col-md-6">
+                    <label asp-for="@Model.Email" class="form-label"></label>
+                    <input asp-for="@Model.Email" type="email" class="form-control" id="inputAddress" placeholder="Email" disabled>
+                </div>
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+        
+    </div> <!-- end preview-->
+</div> <!-- end tab-content-->

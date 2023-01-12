@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biugra.Service", "Biugra.Application\Biugra.Service.csproj", "{08DA58FC-398A-4449-BCAD-0393DB07DE9B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biugra.Domain", "Biugra.Domain\Biugra.Domain.csproj", "{7594E02F-C6D3-4090-848A-9F6487E06A54}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biugra.API", "Biugra.API\Biugra.API.csproj", "{A0FFBA9F-C1C8-499B-A48A-6AF46DB4348E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biugra.Infrastructure", "Infrastructure\Biugra.Infrastructure.csproj", "{A8AB9EF4-4007-44C8-8A27-6E42FC7A499B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biugra.BackOffice", "Biugra.BackOffice\Biugra.BackOffice.csproj", "{D4E1F129-1E48-4F78-9848-D44D4145BC7B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biugra.Web", "Biugra.Web\Biugra.Web.csproj", "{05D7B681-A336-4260-8F1B-B2D4215FDD01}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08DA58FC-398A-4449-BCAD-0393DB07DE9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08DA58FC-398A-4449-BCAD-0393DB07DE9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08DA58FC-398A-4449-BCAD-0393DB07DE9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08DA58FC-398A-4449-BCAD-0393DB07DE9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7594E02F-C6D3-4090-848A-9F6487E06A54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7594E02F-C6D3-4090-848A-9F6487E06A54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7594E02F-C6D3-4090-848A-9F6487E06A54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7594E02F-C6D3-4090-848A-9F6487E06A54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0FFBA9F-C1C8-499B-A48A-6AF46DB4348E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0FFBA9F-C1C8-499B-A48A-6AF46DB4348E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0FFBA9F-C1C8-499B-A48A-6AF46DB4348E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0FFBA9F-C1C8-499B-A48A-6AF46DB4348E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8AB9EF4-4007-44C8-8A27-6E42FC7A499B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8AB9EF4-4007-44C8-8A27-6E42FC7A499B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8AB9EF4-4007-44C8-8A27-6E42FC7A499B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8AB9EF4-4007-44C8-8A27-6E42FC7A499B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4E1F129-1E48-4F78-9848-D44D4145BC7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4E1F129-1E48-4F78-9848-D44D4145BC7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4E1F129-1E48-4F78-9848-D44D4145BC7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4E1F129-1E48-4F78-9848-D44D4145BC7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05D7B681-A336-4260-8F1B-B2D4215FDD01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05D7B681-A336-4260-8F1B-B2D4215FDD01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05D7B681-A336-4260-8F1B-B2D4215FDD01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05D7B681-A336-4260-8F1B-B2D4215FDD01}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1C2B197D-7212-4706-81F0-D06DCA0ABCD0}
+	EndGlobalSection
+EndGlobal

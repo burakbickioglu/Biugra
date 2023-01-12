@@ -1,0 +1,13 @@
+﻿global using Microsoft.AspNetCore.Identity;
+global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore;
+global using Biugra.Domain.Interfaces;
+global using System;
+global using System.ComponentModel.DataAnnotations;
+global using MediatR;
+global using Newtonsoft.Json;
+global using Biugra.Domain.Enums;
+global using System.Collections.Generic;
+global using Microsoft.AspNetCore.Http;
+global using Biugra.Domain.Models;
+global using BaseProject.Domain.Models;

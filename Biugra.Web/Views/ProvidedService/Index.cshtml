@@ -1,0 +1,89 @@
+﻿@using Biugra.Domain.Models.Dtos.ProvidedService
+
+@{
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/assets/vendor/jquery/jquery.min.js"></script>
+
+    @if (!string.IsNullOrEmpty(ViewBag.message))
+    {
+    <script language="javascript">
+                        $(document).ready(function () {
+
+                            Swal.fire({
+                                icon: 'error',
+                                title: '@ViewBag.message',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                        });
+    </script>
+        ViewBag.message = null;
+    }
+}
+@model List<ProvidedServiceDTO>
+
+@{
+    int sayac = 0;
+    int i = 0;
+
+}
+
+<div class="container-fluid mt-4">
+
+    <!-- end row-->
+    @foreach (var item in Model)
+    {
+        <div class="row">
+            <div class="col-md-10 mx-auto">
+                <!-- project card -->
+                <div class="card d-block">
+                    <div class="card-body">
+                      
+                        <!-- project title-->
+                        <h4 class="mt-0">
+                            <h1 class="text-primary">@item.Title</h1>
+                        </h4>
+
+                        <p class="text-muted font-13 my-3">
+                            @item.Description
+                        </p>
+
+                        <div class="row">
+                            <div class="col-md-9">
+                                @*<h1 class="text-success">Fiyat: @item.Price BP</h1>*@
+                                <div class="badge bg-secondary"><h5>Öğrenci Sayısı: @item.StudentCount</h5></div>
+                                <br>
+                                <div class="badge bg-success mt-1"><h5>Eğitmen: @item.Teacher.Fullname</h5></div>
+                                <br>
+                                <div id="servicePrice" class="badge bg-primary mt-1"><h5>Fiyat: @item.Price BP</h5></div>
+                            </div>
+                            <div class="col-md-3">
+                                <a asp-controller="ProvidedService" asp-action="TakeService" asp-route-id="@item.Id" id="TakeService" class=" btn btn-outline-primary "
+                               onclick="return confirm('Bu hizmetten faydalanmak istediğinize emin misiniz ? Hizmetin ücreti {@item.Price} BP');"
+                               style="float:right;">
+                                    Faydalanmaya başla
+                                </a>
+                            </div>
+
+                        </div>
+                    </div> <!-- end card-body-->
+                    @*<ul class="list-group list-group-flush">
+                <li class="list-group-item p-3">
+                <!-- project progress-->
+                <p class="mb-2 fw-bold">Progress <span class="float-end">100%</span></p>
+                <div class="progress progress-sm">
+                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                </div><!-- /.progress-bar -->
+                </div><!-- /.progress -->
+                </li>
+                </ul>*@
+                </div> <!-- end card-->
+            </div>
+        </div>
+    }
+
+
+
+</div> <!-- container -->
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>*@
+

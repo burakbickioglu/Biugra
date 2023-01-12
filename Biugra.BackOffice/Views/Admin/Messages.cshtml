@@ -1,0 +1,75 @@
+﻿@using Biugra.Domain.Models.Dtos.Message
+@{
+    Layout = "_Layout";
+}
+@model List<MessageDTO>
+
+
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="page-title">
+                    Mesajlar
+                </h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+
+                    @if (Model.Count() > 0)
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-centered table-nowrap mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Kullanıcı</th>
+                                        <th>Başlık</th>
+                                        <th>Mesaj</th>
+                                        <th>Yanıtla</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+
+                                        @foreach (var item in @Model)
+                                        {
+                                            <tr>
+                                                <td>
+
+                                                    <a asp-controller="Admin" asp-action="UserDetail" asp-route-id=@item.AppUser.Id class="action-icon">@item.AppUser.FirstName @item.AppUser.LastName  <i class="uil-eye"></i></a>
+                                                </td>
+                                                <td>
+                                                    <h5> @item.Title</h5>
+                                                </td>
+                                                <td>
+                                                    <h5> @item.Question</h5>
+                                                </td>
+                                                 <td>
+                                                <a href="mailto:@item.AppUser.Email">Mail Gönder</a>
+                                                 </td>
+                                            </tr>
+
+
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                                    }
+                        else {
+                        <h3 class="mx-2 my-2 text-primary">Mesaj Bulunmamaktadır. </h3>
+                        }
+                    </div> <!-- end card-body-->
+                </div> <!-- end card-->
+            </div> <!-- end col -->
+        </div>
+        <!-- end row -->
+
+    </div> <!-- container -->

@@ -1,0 +1,103 @@
+﻿
+<div class="navbar-custom topnav-navbar">
+    <div class="container-fluid detached-nav">
+
+        <!-- Topbar Logo -->
+        <div class="logo-topbar">
+            <!-- Logo light -->
+            <a href="index.html" class="logo-light">
+                <span class="logo-lg">
+                    <img src="~/assets/images/logo.png" alt="logo" height="22">
+                </span>
+                <span class="logo-sm">
+                    <img src="~/assets/images/logo-sm.png" alt="small logo" height="22">
+                </span>
+            </a>
+
+            <!-- Logo Dark -->
+            <a href="index.html" class="logo-dark">
+                <span class="logo-lg">
+                    <img src="~/assets/images/logo-dark.png" alt="dark logo" height="22">
+                </span>
+                <span class="logo-sm">
+                    <img src="~/assets/images/logo-dark-sm.png" alt="small logo" height="22">
+                </span>
+            </a>
+        </div>
+
+        @*  <!-- Sidebar Menu Toggle Button -->
+        <button class="button-toggle-menu">
+        <i class="mdi mdi-menu"></i>
+        </button>
+        *@
+        <!-- Horizontal Menu Toggle Button -->
+        <button class="navbar-toggle" data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
+            <div class="lines">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+
+        <ul class="list-unstyled topbar-menu float-end mb-0">
+            <li class="dropdown notification-list d-lg-none">
+                <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <i class="ri-search-line noti-icon"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
+                    <form class="p-3">
+                        <input type="search" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
+                    </form>
+                </div>
+            </li>
+
+
+
+
+
+            <li class="notification-list d-none d-sm-inline-block">
+                <a class="nav-link" data-bs-toggle="offcanvas" href="#theme-settings-offcanvas">
+                    <i class="ri-settings-3-line noti-icon"></i>
+                </a>
+            </li>
+
+            <li class="notification-list d-none d-sm-inline-block">
+                <a class="nav-link" href="javascript:void(0)" id="light-dark-mode">
+                    <i class="ri-moon-line noti-icon"></i>
+                </a>
+            </li>
+
+            <li class="notification-list d-none d-md-inline-block">
+                <a class="nav-link" href="" data-toggle="fullscreen">
+                    <i class="ri-fullscreen-line noti-icon"></i>
+                </a>
+            </li>
+
+
+
+            <li class="dropdown notification-list">
+                <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"
+                   aria-expanded="false">
+                    <span class="account-user-avatar">
+                        <img src="~/assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                    </span>
+                    <span>
+                        <span class="account-user-name mt-2">@User.Identity.Name</span>
+                    </span>
+                </a>
+            </li>
+            <!-- item-->
+            <li class="notification-list d-none d-md-inline-block mt-2">
+                <a asp-controller="Account" asp-action="Logout" class="dropdown-item notify-item">
+                    <i class="mdi mdi-logout me-1 "></i>
+                    <span>Çıkış Yap</span>
+                </a>
+            </li>
+    </div>
+
+    </li>
+    </ul>
+
+    <!-- Topbar Search Form -->
+</div>
+</div>

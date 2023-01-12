@@ -1,0 +1,53 @@
+﻿@model UserDTO
+
+<div class="tab-content center">
+    <div class="tab-pane show active mt-3 mx-3" id="form-row-preview">
+        <form asp-action="EditProfile" asp-controller="Account" method="post">
+            <input type="hidden" asp-for="@Model.Id" />
+            <div class="row g-2">
+                <div class="mb-3 col-md-6 mx-auto">
+                    <label asp-for="@Model.FirstName" class="form-label"></label>
+                    <input asp-for="@Model.FirstName" type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row g-2">
+                <div class="mb-3 col-md-6 mx-auto">
+                    <label asp-for="@Model.LastName" class="form-label"></label>
+                    <input asp-for="@Model.LastName" class="form-control" />
+                </div>
+            </div>
+            <div class="row g-2">
+                <div class="mb-3 col-md-6 mx-auto">
+                    <label asp-for="@Model.Email" class="form-label"></label>
+                    <input asp-for="@Model.Email" type="email" class="form-control" disabled>
+                </div>
+            </div>
+            <div class="row g-2">
+                <div class="mb-3 col-md-6 mx-auto">
+                    <label class="form-label">Yaş</label>
+                    <input asp-for="@Model.Age" type="number" class="form-control">
+                </div>
+            </div>
+            <div class="row g-2">
+                <div class="mb-3 col-md-6 mx-auto">
+                    <label asp-for="@Model.HighSchool" class="form-label"></label>
+                    <input asp-for="@Model.HighSchool"  class="form-control">
+                </div>
+            </div>
+            <div class="row g-2">
+                <div class="mb-3 col-md-6 mx-auto">
+                    <label asp-for="@Model.Address" class="form-label"></label>
+                    <textarea rows="5" asp-for="@Model.Address" type="number" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="row g-2 text-right">
+                <div class="mb-3 col-md-6 mx-auto justify-content-end ">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <button type="submit" class="btn btn-primary rounded-pill">Güncelle</button>
+                </div>
+
+            </div>
+        </form>
+
+    </div> <!-- end preview-->
+</div> <!-- end tab-content-->

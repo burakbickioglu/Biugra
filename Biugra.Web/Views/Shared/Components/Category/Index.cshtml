@@ -1,0 +1,15 @@
+﻿@using Biugra.Domain.Models
+@model List<CategoryDTO>
+
+
+
+@foreach(var item in Model){
+
+    <li class="side-nav-item">
+        <a asp-action="Index" asp-controller="Forum" asp-route-category="@item.Name" class="side-nav-link">
+            <i class="@item.Icon"></i>
+            <span>@item.Name</span>
+        </a>
+    </li>
+    <hr />
+}

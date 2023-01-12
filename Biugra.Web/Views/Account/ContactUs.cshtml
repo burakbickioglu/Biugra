@@ -1,0 +1,30 @@
+﻿@using Biugra.Domain.Models.Dtos.Message
+@model MessageDTO
+
+
+<div class="tab-content">
+    <div class="col-xxl-10 col-lg-6 mt-5 mx-auto " id="form-row-preview">
+        <form asp-action="ContactUs" asp-controller="Account" method="post">
+            <input type="hidden" asp-for=@Model.AppUserId />
+            <div class="row g-2 ">
+                <div class="mb-3 col-md-8">
+                    <label class="form-label">Mesaj Başlığı</label>
+                    <input asp-for="@Model.Title" type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row g-2">
+
+                <div class="mb-3 col-md-8">
+                    <label class="form-label">Mesajınız</label>
+                    <textarea rows="3" asp-for="@Model.Question" class="form-control"></textarea>
+
+                </div>
+            </div>
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <button type="submit" class="btn btn-success rounded-pill">Gönder</button>
+        </form>
+    </div> <!-- end preview-->
+
+
+</div> <!-- end tab-content-->
